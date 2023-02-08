@@ -14,6 +14,9 @@ const defaultItems = [
 
 
 function App() {
+
+
+
   const [input,setInput]= useState('')
   const [items,setItems]= useState(defaultItems)
 
@@ -32,6 +35,18 @@ function App() {
     })
   }
   
+  const completeItem =(text)=>{
+    const itemIndex= items.findIndex(item=> item.text===text)
+    items[itemIndex].completed=true;
+    const newItems= [...items]
+    setItems(newItems) 
+  } 
+  const deleteItem =(text)=>{
+    const itemIndex= items.findIndex(item=> item.text===text);
+    const newItems= [...items];
+    newItems.splice(itemIndex,1);
+    setItems(newItems); 
+  } 
 
   return (
     <>
@@ -39,7 +54,10 @@ function App() {
     <TodoSearch input= {input} setInput={setInput} />
 
     <TodoList>
-       {searchedItems.map(item=>(<TodoItem key={item.text} text={item.text} completed={item.completed}/>))}
+       {searchedItems.map(item=>(<TodoItem key={item.text} text={item.text} completed={item.completed}
+       onComplete={()=>completeItem(item.text)}
+       onDelete={()=>deleteItem(item.text)}
+       />))}
     </TodoList> 
 
     <CreateTodoButton/>   
