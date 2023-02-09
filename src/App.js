@@ -13,22 +13,35 @@ import {CreateTodoButton} from './components/CreateTodoButton';
 ];
  */
 
+function useLocalStorage(objName, initialState) {
 
+  const localStorageObj= localStorage.getItem(objName)
+
+  let parseObj;
+
+  if (!localStorageObj) {localStorage.setItem(objName, JSON.stringify(initialState))
+parseObj=initialState}
+  else {parseObj = JSON.parse(localStorageObj)}
+
+  const [obj,setObj]= useState(parseObj)
+
+  const saveItems = (newItems)=>{
+    const stringifiedItems=JSON.stringify(newItems)
+    localStorage.setItem(objName,stringifiedItems)
+    setObj(newItems);
+  }
+
+ return [obj,saveItems];
+}
 
 
 
 function App() {
 
-  const localStorageItems= localStorage.getItem('TODOS_V1')
-
-  let parseItems;
-
-  if (!localStorageItems) {localStorage.setItem('TODOS_V1', JSON.stringify([]))
-parseItems=[]}
-  else {parseItems = JSON.parse(localStorageItems)}
+  const [items,saveItems]= useLocalStorage('TODOS_V1', []);
 
   const [input,setInput]= useState('')
-  const [items,setItems]= useState(parseItems)
+  
 
   const completedItems= items.filter((item)=>!!item.completed).length;
   const totalItems= items.length;
@@ -45,12 +58,7 @@ parseItems=[]}
     })
   }
   
-  const saveItems = (newItems)=>{
-    const stringifiedItems=JSON.stringify(newItems)
-    localStorage.setItem('TODOS_V1',stringifiedItems)
-    setItems(newItems)
-  }
-
+ 
   const completeItem =(text)=>{
     const itemIndex= items.findIndex(item=> item.text===text)
     items[itemIndex].completed=true;
