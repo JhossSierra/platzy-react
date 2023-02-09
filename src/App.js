@@ -5,20 +5,30 @@ import {TodoList} from './components/TodoList';
 import { TodoItem } from './components/TodoItem';
 import {CreateTodoButton} from './components/CreateTodoButton';
 
-const defaultItems = [
+/* const defaultItems = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el cur so de intro a React', completed: false },
   { text: 'Llorar con la llorona', completed: false },
   { text: 'LALALALAA', completed: false },
 ];
+ */
+
+
+
 
 
 function App() {
 
+  const localStorageItems= localStorage.getItem('TODOS_V1')
 
+  let parseItems;
+
+  if (!localStorageItems) {localStorage.setItem('TODOS_V1', JSON.stringify([]))
+parseItems=[]}
+  else {parseItems = JSON.parse(localStorageItems)}
 
   const [input,setInput]= useState('')
-  const [items,setItems]= useState(defaultItems)
+  const [items,setItems]= useState(parseItems)
 
   const completedItems= items.filter((item)=>!!item.completed).length;
   const totalItems= items.length;
@@ -35,17 +45,23 @@ function App() {
     })
   }
   
+  const saveItems = (newItems)=>{
+    const stringifiedItems=JSON.stringify(newItems)
+    localStorage.setItem('TODOS_V1',stringifiedItems)
+    setItems(newItems)
+  }
+
   const completeItem =(text)=>{
     const itemIndex= items.findIndex(item=> item.text===text)
     items[itemIndex].completed=true;
     const newItems= [...items]
-    setItems(newItems) 
+    saveItems(newItems) 
   } 
   const deleteItem =(text)=>{
     const itemIndex= items.findIndex(item=> item.text===text);
     const newItems= [...items];
     newItems.splice(itemIndex,1);
-    setItems(newItems); 
+    saveItems(newItems); 
   } 
 
   return (
