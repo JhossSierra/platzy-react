@@ -1,5 +1,5 @@
 import React from 'react'
-import './CreateTodoButton.css'
+import '../styles/CreateTodoButton.css'
 
 export function CreateTodoButton(props){
     let onclick = ()=>{alert('aqui se abre el modal')};

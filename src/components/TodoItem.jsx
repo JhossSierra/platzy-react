@@ -2,7 +2,6 @@ import React from 'react'
 
 export function TodoItem(props) {
 
- 
   return (
     <li className="TodoItem">
       <span onClick={props.onComplete} className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}>
