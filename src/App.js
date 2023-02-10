@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {TodoCounter} from './components/TodoCounter';
 import {TodoSearch} from './components/TodoSearch';
 import {TodoList} from './components/TodoList';
 import { TodoItem } from './components/TodoItem';
 import {CreateTodoButton} from './components/CreateTodoButton';
 import { TodoContext } from './components/TodoContext';
+import { Modal } from './components/modal';
 /* const defaultItems = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el cur so de intro a React', completed: false },
@@ -14,22 +15,21 @@ import { TodoContext } from './components/TodoContext';
  */
 
 
-
 function App() {
-
+const {loading,
+  error,
+  deleteItem,
+  completeItem, 
+  searchedItems,
+  openModal,}  = useContext(TodoContext)
  
 
   return (
     <>
     <TodoCounter/>
     <TodoSearch />
-    <TodoContext.Consumer>
-      {
-        ({loading,
-          error,
-          deleteItem,
-          completeItem, 
-          searchedItems})=>(<TodoList>
+    
+      <TodoList>
   
      
           {error && <p>Desespérate, hubo un error...</p>}
@@ -47,9 +47,11 @@ function App() {
           />))}
        </TodoList> 
 
-        )
-      }
-    </TodoContext.Consumer>
+       {!openModal &&  
+      <Modal>
+        <p>ola</p>
+      </Modal>}
+    
     
 
     <CreateTodoButton/>   

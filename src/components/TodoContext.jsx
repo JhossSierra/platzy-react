@@ -9,6 +9,7 @@ export function TodoProvider(props){
     const {obj:items,saveObj:saveItems,loading, error}= useLocalStorage('TODOS_V1', []);
 
     const [input,setInput]= useState('')
+    const [openModal, setOpenModal]=useState('false')
     
   
     const completedItems= items.filter((item)=>!!item.completed).length;
@@ -51,7 +52,9 @@ export function TodoProvider(props){
         completedItems,
         totalItems,
         setInput,
-        searchedItems
+        searchedItems,
+        openModal,
+        setOpenModal,
 
     }}>
         {props.children}
