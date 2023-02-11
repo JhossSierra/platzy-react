@@ -6,6 +6,7 @@ import { TodoItem } from './components/TodoItem';
 import {CreateTodoButton} from './components/CreateTodoButton';
 import { TodoContext } from './components/TodoContext';
 import { Modal } from './components/modal';
+import { TodoForm } from './components/TodoForm';
 /* const defaultItems = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el cur so de intro a React', completed: false },
@@ -49,7 +50,7 @@ const {loading,
 
        {!openModal &&  
       <Modal>
-        <p>ola</p>
+        <TodoForm/>
       </Modal>}
     
     

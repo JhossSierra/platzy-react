@@ -27,6 +27,12 @@ export function TodoProvider(props){
       })
     }
     
+    const addItem =(text)=>{
+        const newItems= [...items]
+      newItems.push({completed:false, text})
+      saveItems(newItems) 
+    } 
+
    
     const completeItem =(text)=>{
       const itemIndex= items.findIndex(item=> item.text===text)
@@ -52,9 +58,11 @@ export function TodoProvider(props){
         completedItems,
         totalItems,
         setInput,
+        input,
         searchedItems,
         openModal,
         setOpenModal,
+        addItem,
 
     }}>
         {props.children}
