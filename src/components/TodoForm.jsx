@@ -8,10 +8,8 @@ import '../styles/Todoform.css'
     
     const onAdd= function(e){
         e.preventDefault()
-        addItem(textArea)
-        
-        setOpenModal(true)
-    }
+        if (textArea===''){setOpenModal(true)}
+        else {addItem(textArea); setOpenModal(true)}}
     const onCancel= function(){
         
         setOpenModal(true)
