@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/https//JhossSierra.github.io/platzy-react/static/css/main.e71187df.css",
-    "main.js": "/https//JhossSierra.github.io/platzy-react/static/js/main.ac886ba4.js",
-    "index.html": "/https//JhossSierra.github.io/platzy-react/index.html",
-    "main.e71187df.css.map": "/https//JhossSierra.github.io/platzy-react/static/css/main.e71187df.css.map",
-    "main.ac886ba4.js.map": "/https//JhossSierra.github.io/platzy-react/static/js/main.ac886ba4.js.map"
+    "main.css": "/platzy-react/static/css/main.e71187df.css",
+    "main.js": "/platzy-react/static/js/main.ac886ba4.js",
+    "index.html": "/platzy-react/index.html",
+    "main.e71187df.css.map": "/platzy-react/static/css/main.e71187df.css.map",
+    "main.ac886ba4.js.map": "/platzy-react/static/js/main.ac886ba4.js.map"
   },
   "entrypoints": [
     "static/css/main.e71187df.css",
