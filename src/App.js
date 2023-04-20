@@ -28,7 +28,7 @@ const {loading,
   return (
     <>
     <TodoCounter/>
-    <TodoSearch />
+    <TodoSearch/>    
     
       <TodoList>
   
