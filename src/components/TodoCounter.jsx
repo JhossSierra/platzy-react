@@ -4,8 +4,6 @@ import { TodoContext } from './TodoContext';
 
 
 
-
-
 export function TodoCounter(){
     const{totalItems, completedItems}=useContext(TodoContext)
     
